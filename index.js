@@ -6,7 +6,7 @@ var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 var port = process.env.PORT || 3013;
 var fs = require('fs')
-var logger = fs.createWriteStream(path.join(__dirname, 'app/log.txt'), {
+var logger = fs.createWriteStream(path.join(__dirname, 'public/log.txt'), {
   flags: 'a' // 'a' means appending (old data will be preserved)
 })
 server.listen(port, () => {
@@ -14,7 +14,7 @@ server.listen(port, () => {
 });
 
 // Routing
-app.use(express.static(path.join(__dirname, 'app')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Chatroom
 
