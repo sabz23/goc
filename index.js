@@ -4,7 +4,7 @@ var app = express();
 var path = require('path');
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
-var port = process.env.PORT || 3011;
+var port = process.env.PORT || 3013;
 var fs = require('fs')
 var logger = fs.createWriteStream(path.join(__dirname, 'app/log.txt'), {
   flags: 'a' // 'a' means appending (old data will be preserved)
@@ -33,6 +33,8 @@ io.on('connection', (socket) => {
       console.log(data)
       logger.write(data + ',');
   });
+    
+    
 
   // when the client emits 'add user', this listens and executes
   socket.on('add user', (username) => {
